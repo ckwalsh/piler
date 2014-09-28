@@ -32,6 +32,9 @@ getCompiler = (filePath) ->
     throw new Error "Could not find compiler for #{ filePath }"
   compiler.render
 
+addCompiler = (ext, compiler) ->
+  compilers[ext] = compiler
+
 #http://javascriptweblog.wordpress.com/2011/05/31/a-fresh-look-at-javascript-mixins/
 asCodeOb = do ->
   getId = ->
@@ -444,7 +447,4 @@ exports.createCSSManager = (settings={}) ->
   settings.production = production
   new CSSManager settings
 
-
-
-
-
+exports.addCompiler = addCompiler
